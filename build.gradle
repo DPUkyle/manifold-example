@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+wrapper {
+    gradleVersion '4.3-rc-1'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile files("${System.getProperty('java.home')}/../lib/tools.jar")
+    compile 'systems.manifold:manifold-all:0.2-alpha'
+    testCompile 'junit:junit:4.12'
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '-Xplugin:Manifold'
+}
+
+compileTestJava {
+    doFirst {
+        logger.quiet 'Muh test classpath:'
+        classpath.files.each { File file -> logger.quiet(file.absolutePath) }
+    }
+}
