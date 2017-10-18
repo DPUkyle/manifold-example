@@ -8,6 +8,7 @@ public class DummyTest {
 
   @Test
   public void doesNothing() {
-    Assert.assertEquals(1, new Dummy().things().first());
+//    Assert.fail("intentional");
+    Assert.assertEquals("First element should be 1", 1, (int) new Dummy().things().first());
   }
 }
