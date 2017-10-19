@@ -1,4 +1,13 @@
-apply plugin: 'java'
+plugins {
+  id 'com.gradle.build-scan' version '1.10'
+  id 'java'
+}
+
+buildScan {
+  licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+  licenseAgree = 'yes'
+  publishAlways()
+}
 
 wrapper {
     gradleVersion '4.3-rc-2'
